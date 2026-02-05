@@ -18,6 +18,11 @@ Rules:
 - Output ONLY the rewritten prompt
 `;
 
+const FIRST_TIMEOUT_MS = 8000;
+const SUBSEQUENT_TIMEOUT_MS = 4000;
+
+let hasWarmedUp = false;
+
 
 const args = process.argv.slice(2).join(" ");
 
@@ -30,19 +35,34 @@ function stripPolish(input: string): string {
 }
 
 async function refineWithOllama(prompt: string): Promise<string> {
-  const response = await fetch("http://localhost:11434/api/generate", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      model: "llama3",
-      prompt: `${SYSTEM_PROMPT}\n\nUser prompt:\n${prompt}`,
-      stream: false
-    })
-  });
+  const timeoutMs = hasWarmedUp
+    ? SUBSEQUENT_TIMEOUT_MS
+    : FIRST_TIMEOUT_MS;
 
-  const data = await response.json();
-  return data.response?.trim() || prompt;
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), timeoutMs);
+
+  try {
+    const response = await fetch("http://localhost:11434/api/generate", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      signal: controller.signal,
+      body: JSON.stringify({
+        model: "llama3",
+        prompt: `${SYSTEM_PROMPT}\n\nUser prompt:\n${prompt}`,
+        stream: false
+      })
+    });
+
+    const data = await response.json();
+    hasWarmedUp = true;
+
+    return data.response?.trim() || prompt;
+  } finally {
+    clearTimeout(timeout);
+  }
 }
+
 
 
 async function run(input: string) {
