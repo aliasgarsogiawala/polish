@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import { stdin } from "process";
 
 const chunks: Buffer[] = [];
