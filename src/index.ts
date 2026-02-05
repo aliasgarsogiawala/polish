@@ -2,17 +2,24 @@
 
 import { stdin } from "process";
 
-const chunks: Buffer[] = [];
+const args = process.argv.slice(2).join(" ");
 
 function run(input: string) {
   console.log(input);
 }
 
-stdin.on("data", (chunk) => {
-  chunks.push(typeof chunk === "string" ? Buffer.from(chunk) : chunk);
-});
+if (args) {
+  run(args);
+} 
+else {
+  const chunks: Buffer[] = [];
 
-stdin.on("end", () => {
-  const input = Buffer.concat(chunks).toString("utf8").trim();
-  run(input);
-});
+  stdin.on("data", (chunk) => {
+    chunks.push(typeof chunk === "string" ? Buffer.from(chunk) : chunk);
+  });
+
+  stdin.on("end", () => {
+    const input = Buffer.concat(chunks).toString("utf8").trim();
+    run(input);
+  });
+}
