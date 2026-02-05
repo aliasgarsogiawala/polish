@@ -2,7 +2,8 @@
   "name": "polish",
   "version": "1.0.0",
   "bin": {
-    "polish": "./dist/index.js"
+    "polish": "./dist/index.js",
+    "polish-opencode": "./dist/opencode.js"
   },
   "description": "",
   "main": "index.js",
