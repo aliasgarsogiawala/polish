@@ -4,6 +4,15 @@ import { stdin } from "process";
 
 const args = process.argv.slice(2).join(" ");
 
+function shouldPolish(input: string): boolean {
+  return input.trim().endsWith(" polish");
+}
+
+function stripPolish(input: string): string {
+  return input.replace(/\s+polish$/, "").trim();
+}
+
+
 function run(input: string) {
   console.log(input);
 }
