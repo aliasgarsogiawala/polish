@@ -14,8 +14,16 @@ function stripPolish(input: string): string {
 
 
 function run(input: string) {
-  console.log(input);
+  if (!shouldPolish(input)) {
+    console.log(input);
+    return;
+  }
+
+  const clean = stripPolish(input);
+
+  console.log(clean);
 }
+
 
 if (args) {
   run(args);
