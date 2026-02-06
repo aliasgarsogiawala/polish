@@ -1,10 +1,13 @@
 {
   "name": "idkbro",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "bin": {
     "idkbro": "./dist/index.js",
     "idkbro-opencode": "./dist/opencode.js"
   },
+  "files": [
+  "dist"
+],
   "description": "",
   "main": "index.js",
   "scripts": {
