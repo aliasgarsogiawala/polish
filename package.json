@@ -1,6 +1,6 @@
 {
   "name": "idkbro",
-  "version": "0.1.2",
+  "version": "0.1.1",
   "bin": {
     "idkbro": "./dist/index.js",
     "idkbro-opencode": "./dist/opencode.js"
