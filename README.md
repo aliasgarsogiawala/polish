@@ -1,14 +1,14 @@
-# polish
+# idkbro
 
 Invisible prompt refinement for CLI workflows.
 
-Add `polish` to the end of your prompt. Get a better version back. That's it.
+Add `idkbro` to the end of your prompt. Get a better version back. That's it.
 
 ## Install
 
 ```bash
-git clone https://github.com/aliasgarsogiawala/polish.git
-cd polish
+git clone https://github.com/aliasgarsogiawala/idkbro.git
+cd idkbro
 npm install
 npm run build
 npm link
@@ -17,28 +17,28 @@ npm link
 ## Usage
 
 ```bash
-polish "add jwt auth polish"
+idkbro "add jwt auth idkbro"
 ```
 
 Without the keyword:
 ```bash
-polish "add jwt auth"  # passes through unchanged
+idkbro "add jwt auth"  # passes through unchanged
 ```
 
 With pipes:
 ```bash
-echo "fix login bug polish" | polish | opencode
+echo "fix login bug idkbro" | idkbro | opencode
 ```
 
 ## How it works
 
-`polish` must be the **last word**. Otherwise, input passes through.
+`idkbro` must be the **last word**. Otherwise, input passes through.
 
 | Input                 | Behavior  |
 | --------------------- | --------- |
-| `add jwt auth polish` | ✅ refined |
-| `polish add jwt auth` | ❌ ignored |
-| `add polish jwt auth` | ❌ ignored |
+| `add jwt auth idkbro` | ✅ refined |
+| `idkbro add jwt auth` | ❌ ignored |
+| `add idkbro jwt auth` | ❌ ignored |
 
 ## Requirements
 
@@ -52,11 +52,11 @@ ollama pull llama3
 ollama list  # verify
 ```
 
-Polish talks to `http://localhost:11434/api/generate`.
+idkbro talks to `http://localhost:11434/api/generate`.
 
 ## Failure behavior
 
-If anything fails (Ollama down, network error, etc), Polish returns your original input. No crashes.
+If anything fails (Ollama down, network error, etc), idkbro returns your original input. No crashes.
 
 ## Why no flags/config?
 
@@ -69,12 +69,12 @@ Works fine. Just make sure:
 - Ran `npm link`
 - Restarted terminal
 
-Check with `where polish`.
+Check with `where idkbro`.
 
 ## Dev mode
 
 ```bash
-npm run dev -- "your prompt polish"
+npm run dev -- "your prompt idkbro"
 ```
 
 ## License

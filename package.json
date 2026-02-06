@@ -1,9 +1,9 @@
 {
-  "name": "polish",
+  "name": "idkbro",
   "version": "1.0.0",
   "bin": {
-    "polish": "./dist/index.js",
-    "polish-opencode": "./dist/opencode.js"
+    "idkbro": "./dist/index.js",
+    "idkbro-opencode": "./dist/opencode.js"
   },
   "description": "",
   "main": "index.js",

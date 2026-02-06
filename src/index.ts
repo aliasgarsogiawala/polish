@@ -88,7 +88,7 @@ async function waitForModel(model: string): Promise<void> {
 
 
 async function setupOllama() {
-  console.log("🔧 Polish setup starting...\n");
+  console.log("🔧 idkbro setup starting...\n");
 
   if (!isOllamaInstalled()) {
     console.log("❌ Ollama is not found in PATH");
@@ -101,7 +101,7 @@ async function setupOllama() {
 
   if (!isOllamaRunning()) {
     console.log("❌ Ollama is installed but not running");
-    console.log("👉 Start Ollama, then re-run: polish setup");
+    console.log("👉 Start Ollama, then re-run: idkbro setup");
     return;
   }
 
@@ -109,28 +109,28 @@ async function setupOllama() {
 
   if (isModelAvailable("llama3")) {
     console.log("✅ Model 'llama3' is already available");
-    console.log("🎉 Polish setup complete!");
+    console.log("🎉 idkbro setup complete!");
     console.log("🚀 Try:");
-    console.log('   polish "add jwt auth polish"\n');
+    console.log('   idkbro "add jwt auth idkbro"\n');
     return;
   }
 
   startModelPull("llama3");
   await waitForModel("llama3");
 
-  console.log("🎉 Polish setup complete!");
+  console.log("🎉 idkbro setup complete!");
   console.log("🚀 Try:");
-  console.log('   polish "add jwt auth polish"\n');
+  console.log('   idkbro "add jwt auth idkbro"\n');
 }
 
 
 
-function shouldPolish(input: string): boolean {
-  return input.trim().endsWith(" polish");
+function shouldIdkbro(input: string): boolean {
+  return input.trim().endsWith(" idkbro");
 }
 
-function stripPolish(input: string): string {
-  return input.replace(/\s+polish$/, "").trim();
+function stripIdkbro(input: string): string {
+  return input.replace(/\s+idkbro$/, "").trim();
 }
 
 async function refineWithOllama(prompt: string): Promise<string> {
@@ -165,12 +165,12 @@ async function refineWithOllama(prompt: string): Promise<string> {
 
 
 async function run(input: string) {
-  if (!shouldPolish(input)) {
+  if (!shouldIdkbro(input)) {
     console.log(input);
     return;
   }
 
-  const clean = stripPolish(input);
+  const clean = stripIdkbro(input);
 
   try {
     const refined = await refineWithOllama(clean);

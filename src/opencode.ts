@@ -35,23 +35,23 @@ const rl = readline.createInterface({
 });
 
 rl.on("line", async (line) => {
-  if (line.trim().endsWith(" polish")) {
+  if (line.trim().endsWith(" idkbro")) {
     try {
-      const refined = await refineWithOllama(stripPolish(line));
+      const refined = await refineWithOllama(stripIdkbro(line));
       opencode.stdin.write(refined + "\n");
     } catch {
-      opencode.stdin.write(stripPolish(line) + "\n");
+      opencode.stdin.write(stripIdkbro(line) + "\n");
     }
   } else {
     opencode.stdin.write(line + "\n");
   }
 });
-function shouldPolish(input: string): boolean {
-  return input.trim().endsWith(" polish");
+function shouldIdkbro(input: string): boolean {
+  return input.trim().endsWith(" idkbro");
 }
 
-function stripPolish(input: string): string {
-  return input.replace(/\s+polish$/, "").trim();
+function stripIdkbro(input: string): string {
+  return input.replace(/\s+idkbro$/, "").trim();
 }
 
 async function refineWithOllama(prompt: string): Promise<string> {
