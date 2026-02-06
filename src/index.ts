@@ -20,8 +20,8 @@ Rules:
 - Output ONLY the rewritten prompt
 `;
 
-const FIRST_TIMEOUT_MS = 8000;
-const SUBSEQUENT_TIMEOUT_MS = 4000;
+const FIRST_TIMEOUT_MS = 20000;
+const SUBSEQUENT_TIMEOUT_MS = 10000;
 
 let hasWarmedUp = false;
 const args = process.argv.slice(2).join(" ");
